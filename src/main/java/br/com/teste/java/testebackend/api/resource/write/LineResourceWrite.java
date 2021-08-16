@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/linhas")
 @Log4j2
@@ -19,7 +21,7 @@ public class LineResourceWrite {
     private final LineService linhaService;
 
     @PostMapping
-    public ResponseEntity<Line> save(@RequestBody LinePostRequestBody linePostRequestBody){
+    public ResponseEntity<Line> save(@RequestBody @Valid LinePostRequestBody linePostRequestBody){
         return new ResponseEntity<>(linhaService.save(linePostRequestBody), HttpStatus.CREATED);
     }
 

@@ -12,8 +12,7 @@ import java.util.List;
 public class TesteBackEndWebMvcConfigurer implements WebMvcConfigurer {
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
-        PageableHandlerMethodArgumentResolver pagaHandler =
-                new PageableHandlerMethodArgumentResolver();
+        var pagaHandler = new PageableHandlerMethodArgumentResolver();
         pagaHandler.setFallbackPageable(PageRequest.of(0, 5));
         resolvers.add(pagaHandler);
     }

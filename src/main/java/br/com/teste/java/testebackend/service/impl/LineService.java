@@ -35,7 +35,7 @@ public class LineService implements LineServiceCustom {
     }
 
     @Override
-    public List<Line> findByParada(Long id) {
+    public List<Line> findByStop(Long id) {
         List<Long> linesId = lineRepository.findByStopsId(id);
         List<Line> lines = new ArrayList();
         for (Long ids: linesId) {
@@ -48,7 +48,6 @@ public class LineService implements LineServiceCustom {
     @Override
     @Transactional
     public Line save(LinePostRequestBody linePostRequestBody) {
-        LineMapper.INSTANCE.toLine(linePostRequestBody);
         return lineRepository.save(LineMapper.INSTANCE.toLine(linePostRequestBody));
     }
 
@@ -60,7 +59,7 @@ public class LineService implements LineServiceCustom {
     @Override
     public void replace(LinePutRequestBody linePutRequestBody){
         var lineSave = findByIdOrThrowBadRequestException(linePutRequestBody.getId());
-        Line line = LineMapper.INSTANCE.toLine(linePutRequestBody);
+        var line = LineMapper.INSTANCE.toLine(linePutRequestBody);
         line.setId(lineSave.getId());
         lineRepository.save(line);
     }

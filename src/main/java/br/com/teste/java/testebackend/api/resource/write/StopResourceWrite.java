@@ -1,6 +1,5 @@
 package br.com.teste.java.testebackend.api.resource.write;
 
-import br.com.teste.java.testebackend.domain.Line;
 import br.com.teste.java.testebackend.request.post.StopPostRequestBody;
 import br.com.teste.java.testebackend.request.put.StopPutRequestBody;
 import br.com.teste.java.testebackend.service.impl.StopService;
@@ -9,6 +8,8 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/paradas")
@@ -19,7 +20,7 @@ public class StopResourceWrite {
     private final StopService stopService;
 
     @PostMapping
-    public ResponseEntity<Line> save(@RequestBody StopPostRequestBody stopPostRequestBody){
+    public ResponseEntity save(@RequestBody @Valid StopPostRequestBody stopPostRequestBody){
         return new ResponseEntity(stopService.save(stopPostRequestBody), HttpStatus.CREATED);
     }
 

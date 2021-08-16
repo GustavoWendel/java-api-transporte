@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/PosicoesVeiculo")
 @Log4j2
@@ -19,10 +21,8 @@ public class VehiclePositionResourceWrite {
     private final VehiclePositionService vehiclePositionService;
 
     @PostMapping
-    public ResponseEntity<VehiclePosition> save(@RequestBody VehiclePositionPostRequestBody vehiclePositionPostRequestBody) {
-      VehiclePosition vehiclePosition = VehiclePosition.builder()
-                .longitude(vehiclePositionPostRequestBody.getLongitude()).latitude(vehiclePositionPostRequestBody.getLatitude()).build();
-        return new ResponseEntity<>(vehiclePositionService.save(vehiclePosition), HttpStatus.CREATED);
+    public ResponseEntity<VehiclePosition> save(@RequestBody @Valid VehiclePositionPostRequestBody vehiclePositionPostRequestBody) {
+        return new ResponseEntity<>(vehiclePositionService.save(vehiclePositionPostRequestBody), HttpStatus.CREATED);
     }
 
     @DeleteMapping(path = "/{id}")

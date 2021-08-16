@@ -21,8 +21,8 @@ public class VehiclePositionResourceRead {
     private final VehiclePositionService vehiclePositionService;
 
     @GetMapping
-    public ResponseEntity<Page<VehiclePosition>> list(Pageable pageable){
-        return ResponseEntity.ok(vehiclePositionService.listAll(pageable));
+    public Page<VehiclePosition> list(Pageable pageable){
+        return vehiclePositionService.listAll(pageable);
     }
 
     @GetMapping(path = "/{id}")

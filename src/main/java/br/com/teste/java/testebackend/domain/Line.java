@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +23,13 @@ public class Line implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_line", unique = true, nullable = false)
+    @Column(name = "id_line", unique = true, nullable = false)
     private Long id;
 
-
+    @NotNull(message = "The name line cannot be null")
+    @NotEmpty(message = "The name line cannot be empty")
     private String name;
+
     private double latitude;
     private double longitude;
 

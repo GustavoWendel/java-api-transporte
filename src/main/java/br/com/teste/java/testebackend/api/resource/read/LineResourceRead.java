@@ -22,8 +22,8 @@ public class LineResourceRead {
     private final LineService linhaService;
 
     @GetMapping
-    public ResponseEntity<Page<Line>> list(Pageable pageable){
-        return ResponseEntity.ok(linhaService.listAll(pageable));
+    public Page<Line> list(Pageable pageable){
+        return linhaService.listAll(pageable);
     }
 
     @GetMapping(path = "/{id}")
@@ -33,6 +33,6 @@ public class LineResourceRead {
 
     @GetMapping(value = "parada/{id}")
     public ResponseEntity<List<Line>> findByParada(@PathVariable Long id){
-        return ResponseEntity.ok(linhaService.findByParada(id));
+        return ResponseEntity.ok(linhaService.findByStop(id));
     }
 }

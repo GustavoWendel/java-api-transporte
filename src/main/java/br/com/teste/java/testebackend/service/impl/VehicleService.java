@@ -28,8 +28,6 @@ public class VehicleService implements VehicleServiceCustom {
         return vehicleRepository.findAll(pageable);
     }
 
-
-
     @Override
     public Vehicle findByIdOrThrowBadRequestException(Long id) {
         return vehicleRepository.findById(id)
@@ -57,7 +55,6 @@ public class VehicleService implements VehicleServiceCustom {
     @Override
     @Transactional
     public Vehicle save(VehiclePostRequestBody vehiclePostRequestBody) {
-        VehicleMapper.INSTANCE.toVehicle(vehiclePostRequestBody);
         return vehicleRepository.save( VehicleMapper.INSTANCE.toVehicle(vehiclePostRequestBody));
     }
     @Override

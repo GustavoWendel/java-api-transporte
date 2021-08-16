@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +22,11 @@ public class Stop implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="stop_id", unique = true)
+    @Column(name = "stop_id", unique = true)
     private Long id;
+
+    @NotNull(message = "The name stop cannot be null")
+    @NotEmpty(message = "The name stop cannot be empty")
     private String name;
     private double latitude;
     private double longitude;

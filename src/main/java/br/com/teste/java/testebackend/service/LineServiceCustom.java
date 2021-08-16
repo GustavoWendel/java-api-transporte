@@ -14,7 +14,7 @@ public interface LineServiceCustom {
 
     Line findByIdOrThrowBadRequestException(Long id);
 
-    List<Line> findByParada(Long id);
+    List<Line> findByStop(Long id);
 
     @Transactional
     Line save(LinePostRequestBody linePostRequestBody);

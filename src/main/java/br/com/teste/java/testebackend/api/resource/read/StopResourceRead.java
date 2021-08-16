@@ -20,8 +20,8 @@ public class StopResourceRead {
     private final StopService stopService;
 
     @GetMapping
-    public ResponseEntity<Page<Stop>> list(Pageable pageable){
-        return ResponseEntity.ok(stopService.listAll(pageable));
+    public Page<Stop> list(Pageable pageable){
+        return stopService.listAll(pageable);
     }
 
     @GetMapping(path = "/{id}")

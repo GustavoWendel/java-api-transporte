@@ -47,7 +47,6 @@ public class StopService implements StopServiceCustom {
     @Override
     @Transactional
     public Stop save(StopPostRequestBody stopPostRequestBody) {
-        StopMapper.INSTANCE.toStop(stopPostRequestBody);
         return stopRepository.save(StopMapper.INSTANCE.toStop(stopPostRequestBody));
     }
 

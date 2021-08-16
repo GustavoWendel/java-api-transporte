@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 
@@ -20,9 +22,15 @@ public class Vehicle implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_vehicle", unique = true)
+    @Column(name = "id_vehicle", unique = true)
     private Long id;
+
+    @NotNull(message = "The name vehicle cannot be null")
+    @NotEmpty(message = "The name vehicle cannot be empty")
     private String name;
+
+    @NotNull(message = "The name vehicle cannot be null")
+    @NotEmpty(message = "The name vehicle cannot be empty")
     private String model;
 
     @ManyToOne(fetch = FetchType.EAGER)

@@ -36,7 +36,6 @@ public class VehiclePositionService implements VehiclePositionServiceCustom {
     @Override
     @Transactional
     public VehiclePosition save(VehiclePositionPostRequestBody vehiclePositionPostRequestBody) {
-        VehiclePositionMapper.INSTANCE.toVehiclePosition(vehiclePositionPostRequestBody);
         return vehiclePositionRepository.save(VehiclePositionMapper.INSTANCE.toVehiclePosition(vehiclePositionPostRequestBody));
     }
 
